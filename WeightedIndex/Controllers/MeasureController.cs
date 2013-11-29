@@ -51,22 +51,22 @@ namespace WeightedIndex.Controllers
         //
         // GET: /Measure/Edit/5
 
-        public ActionResult Edit(string measureName)
+        public ActionResult Edit(Guid id)
         {
-            return View(_measureList.Where(c => c.name == measureName).FirstOrDefault());
+            return View(_measureList.Where(c => c.id == id).FirstOrDefault());
         }
 
         //
         // POST: /Measure/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(string measureName, MeasureModel measureModel)
+        public ActionResult Edit(Guid id, MeasureModel measureModel)
         {
             try
             {
-                _measureList.Find(c => c.name == measureName).performanceImpact = measureModel.performanceImpact;
-                _measureList.Find(c => c.name == measureName).quickToImplement = measureModel.quickToImplement;
-                _measureList.Find(c => c.name == measureName).name = measureModel.name;
+                _measureList.Find(c => c.id == id).performanceImpact = measureModel.performanceImpact;
+                _measureList.Find(c => c.id == id).quickToImplement = measureModel.quickToImplement;
+                _measureList.Find(c => c.id == id).name = measureModel.name;
                 return RedirectToAction("Index");
             }
             catch
@@ -78,11 +78,11 @@ namespace WeightedIndex.Controllers
         //
         // GET: /Measure/Delete/5
 
-        public ActionResult Delete(string measureName)
+        public ActionResult Delete(Guid id)
         {
             try
             {
-                _measureList.RemoveAll(c => c.name == measureName);
+                _measureList.RemoveAll(c => c.id == id);
                 return RedirectToAction("Index");
             }
             catch
@@ -95,11 +95,11 @@ namespace WeightedIndex.Controllers
         // POST: /Measure/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(string measureName, MeasureModel measureModel)
+        public ActionResult Delete(Guid id, MeasureModel measureModel)
         {
             try
             {
-                _measureList.RemoveAll(c => c.name == measureName);
+                _measureList.RemoveAll(c => c.id == id);
                 return RedirectToAction("Index");
             }
             catch

@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WeightedIndex.Models;
+using WeightedIndex.Models.Binders;
 
 namespace WeightedIndex
 {
@@ -22,6 +24,9 @@ namespace WeightedIndex
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // add custom binder for generating a new GUID for each new measure added
+            ModelBinders.Binders.Add(typeof(MeasureModel), new MeasureModelBinder());
         }
     }
 }

@@ -16,7 +16,7 @@
         <div class="col-md-2">@Html.DisplayFor(modelItem => item.performanceImpact)</div>
         <div class="col-md-2">@Html.DisplayFor(modelItem => item.quickToImplement)</div>
         <div class="col-md-2 score">@Html.DisplayFor(modelItem => item.score)</div>
-        <div class="col-md-3 lastColumn">@Html.ActionLink("Edit", "Edit", new { measureName=item.name }) | @Html.ActionLink("Delete", "Delete", new { measureName=item.name })</div>
+        <div class="col-md-3 lastColumn">@Html.ActionLink("Edit", "Edit", new { id=item.id }) | @Html.ActionLink("Delete", "Delete", new { id=item.id })</div>
 </div>
 }
 <div class="row">

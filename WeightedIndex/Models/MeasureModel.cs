@@ -11,6 +11,12 @@ namespace WeightedIndex.Models
     public class MeasureModel
     {
         /// <summary>
+        /// id of the measure
+        /// </summary>
+        [Required]
+        public Guid id { get; set; }
+
+        /// <summary>
         /// the name of the measure
         /// </summary>
         [Required]
