@@ -18,6 +18,10 @@ namespace WeightedIndex
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            // KnockOutJS
+            bundles.Add(new ScriptBundle("~/bundles/knockoutjs").Include(
+                "~/Scripts/knockout-{version}.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -40,6 +44,12 @@ namespace WeightedIndex
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            // JavaScript for Measure MVVM with KnockoutJS
+            bundles.Add(new ScriptBundle("~/bundles/MeasureMVVM").Include(
+                "~/Scripts/DataAccessObjects/MeasureDataAccessObject.js",
+                "~/Scripts/ViewModels/Measure/IndexViewModel.js",
+                "~/Scripts/ViewControllers/MeasureViewController.js"));
         }
     }
 }

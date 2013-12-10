@@ -259,6 +259,7 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataAccessObjects\MeasureDataAccessObject.js" />
     <Content Include="Scripts\highlightMaxScore.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -274,9 +275,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout-3.0.0.debug.js" />
+    <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ViewControllers\MeasureViewController.js" />
+    <Content Include="Scripts\ViewModels\Measure\IndexViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

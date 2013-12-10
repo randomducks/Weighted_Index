@@ -10,15 +10,21 @@
         <div class="col-md-2"><h4>Score</h4></div>
         <div class="col-md-3 lastColumn"><h4>Settings</h4></div>
 </div>
-@foreach (var item in Model) {
-<div class="row">
-        <div class="col-md-3">@Html.DisplayFor(modelItem => item.name)</div>
-        <div class="col-md-2">@Html.DisplayFor(modelItem => item.performanceImpact)</div>
-        <div class="col-md-2">@Html.DisplayFor(modelItem => item.quickToImplement)</div>
-        <div class="col-md-2 score">@Html.DisplayFor(modelItem => item.score)</div>
-        <div class="col-md-3 lastColumn">@Html.ActionLink("Edit", "Edit", new { id=item.id }) | @Html.ActionLink("Delete", "Delete", new { id=item.id })</div>
+<div data-bind="foreach: measureObservableArray">
+    <div class="row">
+            <div class="col-md-3" data-bind="text: name"></div>
+            <div class="col-md-2" data-bind="text: performanceImpact"></div>
+            <div class="col-md-2" data-bind="text: quickToImplement"></div>
+            <div class="col-md-2 score" data-bind="text: score"></div>
+            <div class="col-md-3 lastColumn"><a data-bind="text: 'Edit', click: $parent.edit"></a><span data-bind="if: $data"> | </span><a data-bind="text: 'Delete', click: $parent.delete"></a></div>
+    </div>
 </div>
-}
 <div class="row">
         <div id="lastRow" class="col-md-3">@Html.ActionLink("Create New", "Create")</div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/knockoutjs");
+    @Scripts.Render("~/bundles/MeasureMVVM")
+    <script type="text/javascript">MeasureViewController.Index();</script>
+}

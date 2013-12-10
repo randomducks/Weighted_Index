@@ -10,9 +10,14 @@ namespace WeightedIndex.Controllers
     public class MeasureController : Controller
     {
         /// <summary>
+        /// ID representing "all measures" instead of a specific measure
+        /// </summary>
+        private const String ALL_MEAUSRES_ID = "All";
+
+        /// <summary>
         /// List of measures for this example web app
         /// </summary>
-        private static List<MeasureModel> _measureList = new List<MeasureModel>();
+        private static List<MeasureModel> measureList = new List<MeasureModel>();
 
 
         //
@@ -20,7 +25,7 @@ namespace WeightedIndex.Controllers
 
         public ActionResult Index()
         {
-            return View(_measureList);
+            return View(measureList);
         }
 
         //
@@ -39,7 +44,7 @@ namespace WeightedIndex.Controllers
         {
             try
             {
-                _measureList.Add(measureModel);
+                measureList.Add(measureModel);
                 return RedirectToAction("Index");
             }
             catch
@@ -53,7 +58,7 @@ namespace WeightedIndex.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            return View(_measureList.Where(c => c.id == id).FirstOrDefault());
+            return View(measureList.Where(c => c.id == id).FirstOrDefault());
         }
 
         //
@@ -64,9 +69,9 @@ namespace WeightedIndex.Controllers
         {
             try
             {
-                _measureList.Find(c => c.id == id).performanceImpact = measureModel.performanceImpact;
-                _measureList.Find(c => c.id == id).quickToImplement = measureModel.quickToImplement;
-                _measureList.Find(c => c.id == id).name = measureModel.name;
+                measureList.Find(c => c.id == id).performanceImpact = measureModel.performanceImpact;
+                measureList.Find(c => c.id == id).quickToImplement = measureModel.quickToImplement;
+                measureList.Find(c => c.id == id).name = measureModel.name;
                 return RedirectToAction("Index");
             }
             catch
@@ -82,7 +87,7 @@ namespace WeightedIndex.Controllers
         {
             try
             {
-                _measureList.RemoveAll(c => c.id == id);
+                measureList.RemoveAll(c => c.id == id);
                 return RedirectToAction("Index");
             }
             catch
@@ -99,13 +104,23 @@ namespace WeightedIndex.Controllers
         {
             try
             {
-                _measureList.RemoveAll(c => c.id == id);
+                measureList.RemoveAll(c => c.id == id);
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+        }
+
+        //
+        // POST: /Measure/getAllAsJson/
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult getAllAsJson()
+        {
+            // all of the measures in JSON
+            return Json(measureList);
         }
     }
 }
