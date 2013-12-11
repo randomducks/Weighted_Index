@@ -2,19 +2,21 @@
 
 // ViewModel for the Index page for Measures
 
-var IndexViewModel = function (measureArray) {
+var IndexViewModel = function (inputMeasureArray) {
 
     // the path for editing a measure
     var MEASURE_EDIT_PATH = '/Measure/Edit/';
 
     var MEASURE_DELETE_PATH = '/Measure/Delete/';
 
-
+    // define a working measure array variable to protect the input measure array variable
+    var workingMeasureArray = inputMeasureArray;
+     
     // gets the highest score in the array
     var getHighestScore = function () {
         var highestScore = null;
 
-        for (var measure in measureArray) {
+        for (var measure in workingMeasureArray) {
 
             var isFirstMeasure = (highestScore === null);
 
@@ -45,7 +47,7 @@ var IndexViewModel = function (measureArray) {
     };
 
     // the public version of the array for KnockoutJS
-    this.measureObservableArray = ko.observableArray(measureArray);
+    this.measureObservableArray = ko.observableArray(workingMeasureArray);
 
     // goes to the edit view
     this.edit = function (measure) {
@@ -60,7 +62,7 @@ var IndexViewModel = function (measureArray) {
     };
 
     // determines whether or not a measure has the highest score
-    this.isHighestScore = function (score) {
-        return (score === getHighestScore());
+    this.hasHighestScore = function (measure) {
+        return (measure.score === getHighestScore());
     };
 }; 
