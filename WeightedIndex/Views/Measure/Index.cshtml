@@ -11,7 +11,7 @@
         <div class="col-md-3 lastColumn"><h4>Settings</h4></div>
 </div>
 <div data-bind="foreach: measureObservableArray">
-    <div class="row">
+    <div class="row" data-bind="css: { highestScore: $parent.hasHighestScore($data) }">
             <div class="col-md-3" data-bind="text: name"></div>
             <div class="col-md-2" data-bind="text: performanceImpact"></div>
             <div class="col-md-2" data-bind="text: quickToImplement"></div>

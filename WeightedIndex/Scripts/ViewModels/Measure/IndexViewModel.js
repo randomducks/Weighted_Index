@@ -1,4 +1,4 @@
-﻿"use strict";
+﻿'use strict';
 
 // ViewModel for the Index page for Measures
 
@@ -16,22 +16,23 @@ var IndexViewModel = function (inputMeasureArray) {
     var getHighestScore = function () {
         var highestScore = null;
 
-        for (var measure in workingMeasureArray) {
+        // for each of the elements of the JSON array
+        for (var i = 0; i < workingMeasureArray.length; i++) {
 
             var isFirstMeasure = (highestScore === null);
 
             if (isFirstMeasure) {
                 // set the highest score to the current measure's score
-                highestScore = measure.getScore();
+                highestScore = workingMeasureArray[i].score;
             }
 
             else if (!isFirstMeasure) {
 
-                var isNewHighestScore = (measure.getScore() > highestScore);
+                var isNewHighestScore = (workingMeasureArray[i].score > highestScore);
 
                 if (isNewHighestScore) {
                     // change the current highest score to the measure's score
-                    highestScore = measure.getScore();
+                    highestScore = workingMeasureArray[i].score;
                 }
                 else {
                     // do nothing

@@ -8,3 +8,6 @@
 .lastColumn {
     border-right: none;
 }
+.highestScore {
+    background-color: rgba(86, 61, 124, 0.15);
+}

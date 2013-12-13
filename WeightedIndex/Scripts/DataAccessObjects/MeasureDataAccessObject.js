@@ -12,10 +12,12 @@
             type: "POST",
             url: GET_ALL_JSON_PATH,
             async: false,
+            dataType: 'json'
         }).done(function (data) {
              jsonArray = data;
         });
 
+        // return parsed JSON
         return jsonArray;
     };
 };
